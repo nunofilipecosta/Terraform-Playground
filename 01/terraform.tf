@@ -16,8 +16,9 @@ provider "aws" {
 # RESOURCES
 
 resource "aws_instance" "nginx" {
-  ami           = "ami-b374d5a5"
+  ami           = "ami-c58c1dd3"
   instance_type = "t2.micro"
+  key_name        = "${var.key_name}"
 
   connection {
     user        = "ec2-user"
