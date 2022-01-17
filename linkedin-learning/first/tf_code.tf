@@ -4,9 +4,18 @@ provider "azurerm" {
   }
 }
 
+variable "location" {
+  type    = string
+  default = "West Europe"
+}
+
+data "azurerm_resource_group" "main" {
+  most_recent = true
+}
+
 resource "azurerm_resource_group" "main" {
   name     = "costa-terraform-first"
-  location = "West Europe"
+  location = var.location
   tags = {
     "environment" = "lab"
   }
@@ -22,4 +31,6 @@ resource "azurerm_storage_account" "main" {
   tags = {
     environment = "lab"
   }
+
+
 }
